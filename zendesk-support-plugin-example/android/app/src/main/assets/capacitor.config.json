@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "zendesk-support-plugin-example",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

@@ -2,8 +2,8 @@ export interface ZendeskSupportPlugin {
   initialize(options: InitializeOptions): Promise<void>;
   setAnonymousIdentity(options: AnonymousOptions): Promise<void>;
   setIdentity(option: IdentityOption): Promise<void>;
-  showHelpCenter(options: HelpCenterOptions): Promise<void>;
-  showTicketRequest(options: TicketRequestOptions): Promise<void>;
+  showHelpCenter(options?: HelpCenterOptions): Promise<void>;
+  showTicketRequest(options?: TicketRequestOptions): Promise<void>;
   showUserTickets(): Promise<void>;
 }
 
@@ -11,6 +11,7 @@ export interface InitializeOptions {
   zendeskUrl: string,
   appId: string,
   clientId: string,
+  debugLog: boolean,
 }
 
 export interface AnonymousOptions {
@@ -23,7 +24,7 @@ export interface IdentityOption {
 }
 
 export interface HelpCenterOptions {
-  groupType?: string,
+  groupBy?: string,
   groupIds?: number[],
   labels?: string[]
 }

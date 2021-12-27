@@ -1,0 +1,7 @@
+{
+  "name": "zendesk-support-plugin-example",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
