@@ -68,7 +68,7 @@ setIdentity(option: IdentityOption) => Promise<void>
 ### showHelpCenter(...)
 
 ```typescript
-showHelpCenter(options: HelpCenterOptions) => Promise<void>
+showHelpCenter(options?: HelpCenterOptions | undefined) => Promise<void>
 ```
 
 | Param         | Type                                                            |
@@ -81,7 +81,7 @@ showHelpCenter(options: HelpCenterOptions) => Promise<void>
 ### showTicketRequest(...)
 
 ```typescript
-showTicketRequest(options: TicketRequestOptions) => Promise<void>
+showTicketRequest(options?: TicketRequestOptions | undefined) => Promise<void>
 ```
 
 | Param         | Type                                                                  |
@@ -105,11 +105,12 @@ showUserTickets() => Promise<void>
 
 #### InitializeOptions
 
-| Prop             | Type                |
-| ---------------- | ------------------- |
-| **`zendeskUrl`** | <code>string</code> |
-| **`appId`**      | <code>string</code> |
-| **`clientId`**   | <code>string</code> |
+| Prop             | Type                 |
+| ---------------- | -------------------- |
+| **`zendeskUrl`** | <code>string</code>  |
+| **`appId`**      | <code>string</code>  |
+| **`clientId`**   | <code>string</code>  |
+| **`debugLog`**   | <code>boolean</code> |
 
 
 #### AnonymousOptions
@@ -129,11 +130,11 @@ showUserTickets() => Promise<void>
 
 #### HelpCenterOptions
 
-| Prop            | Type                  |
-| --------------- | --------------------- |
-| **`groupType`** | <code>string</code>   |
-| **`groupIds`**  | <code>number[]</code> |
-| **`labels`**    | <code>string[]</code> |
+| Prop           | Type                  |
+| -------------- | --------------------- |
+| **`groupBy`**  | <code>string</code>   |
+| **`groupIds`** | <code>number[]</code> |
+| **`labels`**   | <code>string[]</code> |
 
 
 #### TicketRequestOptions
