@@ -40,14 +40,17 @@ import ZendeskCoreSDK
         
         DispatchQueue.main.async {
             let helpCenter = HelpCenterUi.buildHelpCenterOverviewUi(withConfigs: [hcConfig])
-            viewCtrl?.present(helpCenter, animated: true, completion: nil)
+            let navController = UINavigationController(rootViewController: helpCenter)
+            viewCtrl?.present(navController, animated: true, completion: nil)
+            
         }
     }
     
     @objc public func showHelpCenterArticle(_ viewCtrl: UIViewController?, _ articleId: String) {
         DispatchQueue.main.async {
             let articleController = HelpCenterUi.buildHelpCenterArticleUi(withArticleId: articleId, andConfigs: [])
-            viewCtrl?.present(articleController, animated: true, completion: nil)
+            let navController = UINavigationController(rootViewController: articleController)
+            viewCtrl?.present(navController, animated: true, completion: nil)
         }
     }
     
@@ -74,14 +77,16 @@ import ZendeskCoreSDK
         
         DispatchQueue.main.async {
             let requestController = RequestUi.buildRequestUi(with: [requestConfig])
-            viewCtrl?.present(requestController, animated: true, completion: nil)
+            let navController = UINavigationController(rootViewController: requestController)
+            viewCtrl?.present(navController, animated: true, completion: nil)
         }
     }
     
     @objc public func showUserTickets(_ viewCtrl: UIViewController?) {
         DispatchQueue.main.async {
             let requestListController = RequestUi.buildRequestList()
-            viewCtrl?.present(requestListController, animated: true, completion: nil)
+            let navController = UINavigationController(rootViewController: requestListController)
+            viewCtrl?.present(navController, animated: true, completion: nil)
         }
     }
 }
