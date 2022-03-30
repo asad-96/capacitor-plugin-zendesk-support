@@ -2,7 +2,6 @@ package com.websquare.plugins.zendesksupport
 
 import com.getcapacitor.Plugin
 import com.getcapacitor.annotation.CapacitorPlugin
-import com.websquare.plugins.zendesksupport.ZendeskSupport
 import com.getcapacitor.PluginMethod
 import com.getcapacitor.PluginCall
 import org.json.JSONArray
@@ -20,7 +19,7 @@ class ZendeskSupportPlugin : Plugin() {
         val zendeskUrl = call.getString("zendeskUrl", "")
         val debugLog = call.getBoolean("debugLog", false)
         try {
-            implementation.initialize(activity.applicationContext, zendeskUrl, appId, clientId, debugLog)
+            implementation.initialize(activity.applicationContext, zendeskUrl, appId, clientId, debugLog ?: false)
             call.resolve()
         } catch (e: Exception) {
             call.reject(e.message, e)
@@ -44,7 +43,7 @@ class ZendeskSupportPlugin : Plugin() {
 
     @PluginMethod
     fun showHelpCenter(call: PluginCall) {
-        val groupBy = call.getString("groupBy", "")
+        val groupBy = call.getString("groupBy", "") ?: ""
         var groupIds: List<Long?> = ArrayList()
         var labels: List<String?> = ArrayList()
         if (call.hasOption("groupIds")) {
@@ -59,16 +58,16 @@ class ZendeskSupportPlugin : Plugin() {
 
     @PluginMethod
     fun showHelpCenterArticle(call: PluginCall) {
-        val articleId = call.getString("articleId", "")
+        val articleId = call.getString("articleId", "") ?: ""
         implementation.showHelpCenterArticle(activity, articleId)
         call.resolve()
     }
 
     @PluginMethod
     fun showTicketRequest(call: PluginCall) {
-        val subject = call.getString("subject", "")
+        val subject = call.getString("subject", "") ?: ""
         var tags: List<String?> = ArrayList()
-        var fields: List<String?> = ArrayList()
+        var fields: List<String> = ArrayList()
         if (call.hasOption("tags")) {
             tags = jsonArrayToList(call.getArray("tags"))
         }
@@ -89,7 +88,7 @@ class ZendeskSupportPlugin : Plugin() {
         val arrayList: MutableList<T> = ArrayList()
         for (i in 0 until jsonArray.length()) {
             try {
-                arrayList.add(jsonArray[i] as T)
+                arrayList.add((jsonArray[i] ?: "") as T)
             } catch (e: JSONException) {
                 e.printStackTrace()
             }

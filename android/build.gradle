@@ -12,10 +12,12 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.2.1'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10'
     }
 }
 
 apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.kotlin.android'
 
 android {
     compileSdkVersion project.hasProperty('compileSdkVersion') ? rootProject.ext.compileSdkVersion : 30
@@ -53,9 +55,11 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':capacitor-android')
     implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
     //  zendesk sdk
-    implementation group: 'com.zendesk', name: 'support', version: '5.0.5'
+    api( group: 'com.zendesk', name: 'support', version: '5.0.5')
+
 }
